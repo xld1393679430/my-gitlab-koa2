@@ -1,7 +1,7 @@
 /*
  * @Date: 2021-05-10 19:37:16
  * @LastEditors: liangdong.xu
- * @LastEditTime: 2021-05-11 13:01:12
+ * @LastEditTime: 2021-05-11 13:06:25
  * @FilePath: /my-gitlab-koa2/index.js
  */
 const Koa = require('koa')
@@ -15,6 +15,7 @@ const HomeRouter = require('./router/home')
 const NotFountRouter = require('./router/404')
 const TodoRouter = require('./router/todo')
 const PostRouter = require('./router/post')
+const CookieRouter = require('./router/cookie')
 
 const staticPath = './static'
 const app = new Koa()
@@ -28,6 +29,8 @@ router.use('/', HomeRouter.routes(), HomeRouter.allowedMethods())
 router.use('/todo', TodoRouter.routes(), TodoRouter.allowedMethods())
 router.use('/404', NotFountRouter.routes(), NotFountRouter.allowedMethods())
 router.use('/post', PostRouter.routes(), PostRouter.allowedMethods())
+router.use('/cookie', CookieRouter.routes(), CookieRouter.allowedMethods())
+
 
 app.use(router.routes()).use(router.allowedMethods())
 
