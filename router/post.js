@@ -49,7 +49,11 @@ PostRouter.get('/', async ctx => {
 })
 
 PostRouter.post('/', async ctx => {
-    const postData = await parsePostData(ctx)
+    // 方法一： 手动解析ctx.request
+    // const postData = await parsePostData(ctx)
+
+    // 方法二：中间件koa-bodyparser解析POST表单里的数据
+    const postData = ctx.request.body
     ctx.body = postData
 })
 
