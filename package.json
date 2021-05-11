@@ -12,7 +12,9 @@
   "dependencies": {
     "koa": "^2.13.1",
     "koa-bodyparser": "3",
+    "koa-mysql-session": "^0.0.2",
     "koa-router": "7",
+    "koa-session-minimal": "^4.0.1",
     "koa-static": "^5.0.0"
   }
 }
