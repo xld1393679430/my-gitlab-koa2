@@ -1,7 +1,7 @@
 /*
  * @Date: 2021-05-10 19:37:16
  * @LastEditors: liangdong.xu
- * @LastEditTime: 2021-05-12 13:23:03
+ * @LastEditTime: 2021-05-12 21:07:07
  * @FilePath: /my-gitlab-koa2/index.js
  */
 const Koa = require('koa')
@@ -14,7 +14,8 @@ const session = require('koa-session-minimal')
 const MysqlSession = require('koa-mysql-session')
 const views = require('koa-views')
 const jsonp = require('koa-jsonp')
-const logger = require('./middleware/logger')
+const koaLogger = require('koa-logger')
+const config = require('./config')
 const HomeRouter = require('./router/home')
 const NotFountRouter = require('./router/404')
 const TodoRouter = require('./router/todo')
@@ -31,6 +32,14 @@ const Jsonp2Router = require('./router/jsonp2')
 const staticPath = './static'
 const app = new Koa()
 const router = new Router()
+
+// session存储配置
+// const sessionMysqlConfig = {
+//     user: config.database.USERNAME,
+//     password: config.database.PASSWORD,
+//     database: config.database.DATABASE,
+//     host: config.database.HOST,
+// }
 
 // let store = new MysqlSession({
 //     user: 'root',
@@ -52,13 +61,16 @@ const router = new Router()
 // }
 // app.use(session({
 //     key: 'SESSION_ID',
-//     store,
-//     cookie
+//     store: new MysqlSession(sessionMysqlConfig),
 // }))
-app.use(static(path.join(__dirname, staticPath)))
-app.use(logger())
+// 配置控制台日志中间件
+app.use(koaLogger())
 app.use(jsonp())
+// 配置ctx.body解析中间件
 app.use(bodyParser())
+// 配置静态资源加载中间件
+app.use(static(path.join(__dirname, staticPath)))
+// 配置服务端模板渲染引擎中间件
 app.use(views(path.join(__dirname, './view'), {
     extension: 'ejs'
 }))
@@ -76,9 +88,9 @@ router.use('/uploadProgress', UploadProgressRouter.routes(), UploadProgressRoute
 router.use('/jsonp', JsonpRouter.routes(), JsonpRouter.allowedMethods())
 router.use('/jsonp2', Jsonp2Router.routes(), Jsonp2Router.allowedMethods())
 
-
+// 初始化路由中间件
 app.use(router.routes()).use(router.allowedMethods())
 
-app.listen(3002, () => {
+app.listen(config.port, () => {
     console.log('koa start');
 })
