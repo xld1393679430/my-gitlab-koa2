@@ -1,7 +1,7 @@
 /*
  * @Date: 2021-05-12 10:21:24
  * @LastEditors: liangdong.xu
- * @LastEditTime: 2021-05-12 10:52:32
+ * @LastEditTime: 2021-05-12 10:56:38
  * @FilePath: /my-gitlab-koa2/utils/uploadFile.js
  */
 const inspect = require('util').inspect
@@ -56,13 +56,15 @@ function uploadFile(ctx, options) {
     console.log('文件上传中...')
     let result = {
       success: false,
+      message: '',
       formData: {},
     }
 
     // 解析请求文件事件
     busboy.on('file', function (fieldname, file, filename, encoding, mimetype) {
       // let fileName = Math.random().toString(16).substr(2) + '.' + getSuffixName(filename)
-      let _uploadFilePath = path.join(filePath, filename)
+      let fileName = filename
+      let _uploadFilePath = path.join(filePath, fileName)
       let saveTo = path.join(_uploadFilePath)
 
       // 文件保存到制定路径
@@ -72,7 +74,9 @@ function uploadFile(ctx, options) {
       file.on('end', function () {
         result.success = true
         result.message = '文件上传成功'
-
+        result.data = {
+          pictureUrl: `//${ctx.host}/image/${fileType}/${fileName}`
+        }
         console.log('文件上传成功！')
         resolve(result)
       })
