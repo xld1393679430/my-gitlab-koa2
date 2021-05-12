@@ -1,7 +1,7 @@
 /*
  * @Date: 2021-05-10 19:37:16
  * @LastEditors: liangdong.xu
- * @LastEditTime: 2021-05-12 11:02:30
+ * @LastEditTime: 2021-05-12 13:16:17
  * @FilePath: /my-gitlab-koa2/index.js
  */
 const Koa = require('koa')
@@ -24,6 +24,7 @@ const EjsRouter = require('./router/ejs')
 const FileUploadRouter = require('./router/fileUpload')
 const FileUpload2Router = require('./router/fileUpload2')
 const UploadProgressRouter = require('./router/uploadProgress')
+const JsonpRouter = require('./router/jsonp')
 
 const staticPath = './static'
 const app = new Koa()
@@ -69,6 +70,7 @@ router.use('/ejs', EjsRouter.routes(), EjsRouter.allowedMethods())
 router.use('/fileUpload', FileUploadRouter.routes(), FileUploadRouter.allowedMethods())
 router.use('/fileUpload2', FileUpload2Router.routes(), FileUpload2Router.allowedMethods())
 router.use('/uploadProgress', UploadProgressRouter.routes(), UploadProgressRouter.allowedMethods())
+router.use('/jsonp', JsonpRouter.routes(), JsonpRouter.allowedMethods())
 
 
 app.use(router.routes()).use(router.allowedMethods())
