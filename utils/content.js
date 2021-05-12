@@ -1,8 +1,8 @@
 /*
  * @Date: 2021-05-11 10:21:04
  * @LastEditors: liangdong.xu
- * @LastEditTime: 2021-05-11 11:43:56
- * @FilePath: /my-gitlab-koa2/util/content.js
+ * @LastEditTime: 2021-05-12 10:24:15
+ * @FilePath: /my-gitlab-koa2/utils/content.js
  */
 const path = require('path')
 const fs = require('fs')

@@ -1,7 +1,7 @@
 /*
  * @Date: 2021-05-10 19:37:16
  * @LastEditors: liangdong.xu
- * @LastEditTime: 2021-05-11 17:32:17
+ * @LastEditTime: 2021-05-12 10:22:44
  * @FilePath: /my-gitlab-koa2/index.js
  */
 const Koa = require('koa')
@@ -22,6 +22,7 @@ const CookieRouter = require('./router/cookie')
 const SessionRouter = require('./router/session')
 const EjsRouter = require('./router/ejs')
 const FileUploadRouter = require('./router/fileUpload')
+const FileUpload2Router = require('./router/fileUpload2')
 
 const staticPath = './static'
 const app = new Koa()
@@ -65,6 +66,7 @@ router.use('/cookie', CookieRouter.routes(), CookieRouter.allowedMethods())
 router.use('/session', SessionRouter.routes(), SessionRouter.allowedMethods())
 router.use('/ejs', EjsRouter.routes(), EjsRouter.allowedMethods())
 router.use('/fileUpload', FileUploadRouter.routes(), FileUploadRouter.allowedMethods())
+router.use('/fileUpload2', FileUpload2Router.routes(), FileUpload2Router.allowedMethods())
 
 
 app.use(router.routes()).use(router.allowedMethods())

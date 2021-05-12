@@ -4,7 +4,7 @@
  * @LastEditTime: 2021-05-11 11:49:56
  * @LastEditors: liangdong.xu
  * @Description: In User Settings Edit
- * @FilePath: /my-gitlab-koa2/util/dir.js
+ * @FilePath: /my-gitlab-koa2/utils/dir.js
  */
 const url = require('url')
 const fs = require('fs')

@@ -1,8 +1,8 @@
 /*
  * @Date: 2021-05-11 11:38:44
  * @LastEditors: liangdong.xu
- * @LastEditTime: 2021-05-11 11:38:44
- * @FilePath: /my-gitlab-koa2/util/mimes.js
+ * @LastEditTime: 2021-05-12 10:24:27
+ * @FilePath: /my-gitlab-koa2/utils/mimes.js
  */
 
 let mimes = {
