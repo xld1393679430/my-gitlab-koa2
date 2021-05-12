@@ -851,6 +851,11 @@ koa-convert@^1.2.0:
     co "^4.6.0"
     koa-compose "^3.0.0"
 
+koa-jsonp@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.npmjs.org/koa-jsonp/-/koa-jsonp-2.0.2.tgz#4394214403facfd61d7df2466292c9fb0f6bf082"
+  integrity sha1-Q5QhRAP6z9YdffJGYpLJ+w9r8II=
+
 koa-multer@^1.0.2:
   version "1.0.2"
   resolved "https://registry.npmjs.org/koa-multer/-/koa-multer-1.0.2.tgz#d38f7ffd1db97b1aad33e7774732f000ebd67259"
